@@ -79,6 +79,7 @@ const propTypes = {
   value: PropTypes.string,
   onKeyDown: PropTypes.func,
   onSelect: PropTypes.func,
+  onInput: PropTypes.func,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   suggestionsPortalHost:
@@ -110,6 +111,7 @@ class MentionsInput extends React.Component {
     allowSuggestionsAboveCursor: false,
     onKeyDown: () => null,
     onSelect: () => null,
+    onInput: () => null,
     onBlur: () => null,
   }
 
@@ -199,6 +201,7 @@ class MentionsInput extends React.Component {
         !disabled && {
           onChange: this.handleChange,
           onSelect: this.handleSelect,
+          onInput: this.handleSelect,
           onKeyDown: this.handleKeyDown,
           onBlur: this.handleBlur,
           onCompositionStart: this.handleCompositionStart,
