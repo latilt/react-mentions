@@ -200,8 +200,8 @@ class MentionsInput extends React.Component {
       ...(!readOnly &&
         !disabled && {
           onChange: this.handleChange,
+          onInput: this.handleInput,
           onSelect: this.handleSelect,
-          onInput: this.handleSelect,
           onKeyDown: this.handleKeyDown,
           onBlur: this.handleBlur,
           onCompositionStart: this.handleCompositionStart,
@@ -539,6 +539,24 @@ class MentionsInput extends React.Component {
     let eventMock = { target: { value: newValue } }
     // this.props.onChange.call(this, eventMock, newValue, newPlainTextValue, mentions);
     this.executeOnChange(eventMock, newValue, newPlainTextValue, mentions)
+  }
+
+  handleInput = (ev) => {
+    if (isComposing) return
+
+    // do nothing while a IME composition session is active
+    if (isComposing) return
+
+    // refresh suggestions queries
+    const el = this.inputElement
+    if (ev.target.selectionStart === ev.target.selectionEnd) {
+      this.updateMentionsQueries(el.value, ev.target.selectionStart)
+    } else {
+      this.clearSuggestions()
+    }
+
+    // sync highlighters scroll position
+    this.updateHighlighterScroll()
   }
 
   // Handle input element's select event
