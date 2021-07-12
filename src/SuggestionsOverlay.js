@@ -86,7 +86,8 @@ class SuggestionsOverlay extends Component {
 
     return (
       <div
-        {...inline({ position: position || 'absolute', left, top }, style)}
+        // {...inline({ position: position || 'absolute', left, top }, style)}
+        {...inline({ position: "absolute" , left: 0, bottom: "100%", width: "100%", maxHeight: 220, overflow: "auto", }, style)}
         onMouseDown={onMouseDown}
         ref={containerRef}
       >
