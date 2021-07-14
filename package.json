@@ -1,6 +1,6 @@
 {
   "name": "@latilt/react-mentions",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React mentions input",
   "main": "dist/react-mentions.cjs.js",
   "module": "dist/react-mentions.esm.js",
