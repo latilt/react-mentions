@@ -74,6 +74,7 @@ const propTypes = {
   allowSuggestionsAboveCursor: PropTypes.bool,
   forceSuggestionsAboveCursor: PropTypes.bool,
   ignoreAccents: PropTypes.bool,
+  loadingIndicator: PropTypes.element,
   a11ySuggestionsListLabel: PropTypes.string,
 
   value: PropTypes.string,
@@ -282,6 +283,7 @@ class MentionsInput extends React.Component {
         onMouseDown={this.handleSuggestionsMouseDown}
         onMouseEnter={this.handleSuggestionsMouseEnter}
         isLoading={this.isLoading()}
+        loadingIndicator={this.props.loadingIndicator}
         isOpened={this.isOpened()}
         ignoreAccents={this.props.ignoreAccents}
         a11ySuggestionsListLabel={this.props.a11ySuggestionsListLabel}
@@ -1022,6 +1024,7 @@ class MentionsInput extends React.Component {
   }
 
   isLoading = () => {
+    console.log(this.props.children)
     let isLoading = false
     React.Children.forEach(this.props.children, function(child) {
       isLoading = isLoading || (child && child.props.isLoading)

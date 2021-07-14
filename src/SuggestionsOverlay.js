@@ -11,6 +11,7 @@ class SuggestionsOverlay extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     suggestions: PropTypes.object.isRequired,
+    loadingIndicator: PropTypes.element,
     a11ySuggestionsListLabel: PropTypes.string,
     focusIndex: PropTypes.number,
     position: PropTypes.string,
@@ -146,6 +147,9 @@ class SuggestionsOverlay extends Component {
   renderLoadingIndicator() {
     if (!this.props.isLoading) {
       return
+    }
+    if(this.props.loadingIndicator) {
+      return this.props.loadingIndicator;
     }
 
     return <LoadingIndicator style={this.props.style('loadingIndicator')} />
