@@ -1024,7 +1024,6 @@ class MentionsInput extends React.Component {
   }
 
   isLoading = () => {
-    console.log(this.props.children)
     let isLoading = false
     React.Children.forEach(this.props.children, function(child) {
       isLoading = isLoading || (child && child.props.isLoading)
